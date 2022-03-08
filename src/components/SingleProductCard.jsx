@@ -1,4 +1,5 @@
 import React from 'react';
+import { faker } from '@faker-js/faker';
 
 const SingleProductCard = () => {
   return (
@@ -32,13 +33,15 @@ const SingleProductCard = () => {
           loading="lazy"
           alt="Build Your Own Drone"
           class="object-contain w-full h-56"
-          src="https://www.hyperui.dev/photos/toy-1.jpeg"
+          src={faker.image.image()}
         />
 
         <div class="p-6">
-          <p class="text-sm font-medium text-gray-600">$14.99</p>
+          <p class="text-sm font-medium text-gray-600">
+            {faker.commerce.price()}
+          </p>
 
-          <h5 class="mt-1 text-lg font-bold">Build Your Own Drone</h5>
+          <h5 class="mt-1 text-lg font-bold">{faker.commerce.productName()}</h5>
 
           <button
             name="add"

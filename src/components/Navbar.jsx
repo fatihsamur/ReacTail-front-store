@@ -17,7 +17,7 @@ const Navbar = () => {
         <div className="flex-none lg:flex-initial">
           <a href="/">
             <img
-              src="https://www.floatui.com/logo.svg"
+              src="https://st.depositphotos.com/3242865/4421/v/950/depositphotos_44217119-stock-illustration-ecological-business-logo.jpg"
               width={120}
               height={50}
               alt="Float UI logo"
@@ -61,7 +61,7 @@ const Navbar = () => {
                 placeholder="Search"
               />
             </form>
-            <ProfileDropDown class="hidden lg:block" />
+            <ProfileDropDown class="z-50 hidden lg:block" />
             <button
               className="outline-none text-gray-400 block lg:hidden"
               onClick={() => setMenuState(!menuState)}

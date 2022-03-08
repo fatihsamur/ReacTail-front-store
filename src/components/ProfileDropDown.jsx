@@ -27,7 +27,7 @@ const ProfileDropDown = (props) => {
           onClick={() => setState(!state)}
         >
           <img
-            src="https://randomuser.me/api/portraits/men/46.jpg"
+            src="https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png"
             className="w-full h-full rounded-full"
             alt="user avatar"
           />
