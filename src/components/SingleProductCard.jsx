@@ -1,7 +1,8 @@
 import React from 'react';
-import { faker } from '@faker-js/faker';
 
-const SingleProductCard = () => {
+const SingleProductCard = (props) => {
+  const product = props.product;
+  console.log(product);
   return (
     <div>
       <div className="relative z-0 block border border-gray-100">
@@ -30,17 +31,13 @@ const SingleProductCard = () => {
           loading="lazy"
           alt="Build Your Own Drone"
           className="object-contain w-full h-56"
-          src={faker.image.image()}
+          src={product.image}
         />
 
         <div className="p-6">
-          <p className="text-sm font-medium text-gray-600">
-            {faker.commerce.price()}
-          </p>
+          <p className="text-sm font-medium text-gray-600">{product.name}</p>
 
-          <h5 className="mt-1 text-lg font-bold">
-            {faker.commerce.productName()}
-          </h5>
+          <h5 className="mt-1 text-lg font-bold">{product.price}</h5>
 
           <button
             name="add"

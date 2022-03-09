@@ -56,7 +56,6 @@ const Navbar = () => {
                 </button>
               </li>
             </ul>
-            <ProfileDropDown className="mt-5 pt-5 z-100 border-t lg:hidden" />
           </div>
           <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
             <form className="flex items-center space-x-2 border rounded-md p-2">
@@ -80,7 +79,7 @@ const Navbar = () => {
                 placeholder="Search"
               />
             </form>
-            <ProfileDropDown className="z-10 hidden lg:block" />
+            <ProfileDropDown className=" hidden lg:block" />
             <button
               className="outline-none text-gray-400 block lg:hidden"
               onClick={() => setMenuState(!menuState)}
