@@ -4,17 +4,14 @@ import { faker } from '@faker-js/faker';
 const SingleProductCard = () => {
   return (
     <div>
-      <a
-        href="/product/build-your-own-drone"
-        class="relative block border border-gray-100"
-      >
+      <div className="relative z-0 block border border-gray-100">
         <button
           type="button"
           name="wishlist"
-          class="absolute p-2 text-white bg-black rounded-full right-4 top-4"
+          className="absolute p-2 text-white bg-black rounded-full right-4 top-4"
         >
           <svg
-            class="w-4 h-4"
+            className="w-4 h-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -32,26 +29,28 @@ const SingleProductCard = () => {
         <img
           loading="lazy"
           alt="Build Your Own Drone"
-          class="object-contain w-full h-56"
+          className="object-contain w-full h-56"
           src={faker.image.image()}
         />
 
-        <div class="p-6">
-          <p class="text-sm font-medium text-gray-600">
+        <div className="p-6">
+          <p className="text-sm font-medium text-gray-600">
             {faker.commerce.price()}
           </p>
 
-          <h5 class="mt-1 text-lg font-bold">{faker.commerce.productName()}</h5>
+          <h5 className="mt-1 text-lg font-bold">
+            {faker.commerce.productName()}
+          </h5>
 
           <button
             name="add"
             type="button"
-            class="flex items-center justify-center w-full px-8 py-4 mt-4 bg-yellow-500 rounded-sm"
+            className="flex items-center justify-center w-full px-8 py-4 mt-4 bg-yellow-500 rounded-sm"
           >
-            <span class="text-sm font-medium">Add to Cart</span>
+            <span className="text-sm font-medium">Add to Cart</span>
 
             <svg
-              class="w-5 h-5 ml-1.5"
+              className="w-5 h-5 ml-1.5"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -66,7 +65,7 @@ const SingleProductCard = () => {
             </svg>
           </button>
         </div>
-      </a>
+      </div>
     </div>
   );
 };

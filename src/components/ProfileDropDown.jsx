@@ -38,7 +38,7 @@ const ProfileDropDown = (props) => {
         </div>
       </div>
       <ul
-        className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${
+        className={`bg-white top-12 z-10 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${
           state ? '' : 'lg:hidden'
         }`}
       >
