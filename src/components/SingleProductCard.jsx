@@ -1,8 +1,9 @@
 import React from 'react';
+import { useCart } from 'react-use-cart';
 
 const SingleProductCard = (props) => {
   const product = props.product;
-  console.log(product);
+  const { addItem } = useCart();
   return (
     <div>
       <div className="relative z-0 block border border-gray-100">
@@ -29,17 +30,18 @@ const SingleProductCard = (props) => {
 
         <img
           loading="lazy"
-          alt="Build Your Own Drone"
+          alt="product details"
           className="object-contain w-full h-56"
           src={product.image}
         />
 
         <div className="p-6">
-          <p className="text-sm font-medium text-gray-600">{product.name}</p>
+          <p className="text-sm font-medium text-gray-600">{product.title}</p>
 
           <h5 className="mt-1 text-lg font-bold">{product.price}</h5>
 
           <button
+            onClick={() => addItem(product)}
             name="add"
             type="button"
             className="flex items-center justify-center w-full px-8 py-4 mt-4 bg-yellow-500 rounded-sm"

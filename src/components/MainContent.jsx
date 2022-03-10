@@ -10,7 +10,6 @@ const MainContent = () => {
       const getData = async () => {
         const data = await axios.get('https://fakestoreapi.com/products');
         setFetchedData(data);
-        console.log('request yaptım');
       };
       getData();
     } catch (error) {
@@ -19,7 +18,6 @@ const MainContent = () => {
   }, []);
 
   const products = fetchedData.data;
-  console.log('products: ', fetchedData.data);
 
   return (
     <div>
@@ -30,7 +28,7 @@ const MainContent = () => {
           <div class="max-w-screen-xl z-0 px-4 py-8 mx-auto">
             <div class="grid grid-cols-2 mt-8 lg:grid-cols-4 gap-x-4 gap-y-8">
               {products.map((product) => (
-                <SingleProductCard product={product} />
+                <SingleProductCard key={product.id} product={product} />
               ))}
             </div>
           </div>

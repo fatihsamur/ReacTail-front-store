@@ -3,38 +3,12 @@ import { Dialog, Transition } from '@headlessui/react';
 import { X } from 'heroicons-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { openSlice } from '../reducers/openSlice';
-
-const products = [
-  {
-    id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
-    quantity: 1,
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt:
-      'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 2,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  // More products...
-];
+import { useCart } from 'react-use-cart';
 
 export default function Open() {
   const isOpen = useSelector((state) => state.open.value);
   const dispatch = useDispatch();
+  const { items, removeItem, isEmpty } = useCart();
 
   return (
     <Transition.Root show={isOpen} as={Fragment} className="z-100">
@@ -91,48 +65,45 @@ export default function Open() {
                     <div className="mt-8">
                       <div className="flow-root">
                         <ul className="-my-6 divide-y divide-gray-200">
-                          {products.map((product) => (
-                            <li key={product.id} className="flex py-6">
-                              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                <img
-                                  src={product.imageSrc}
-                                  alt={product.imageAlt}
-                                  className="h-full w-full object-cover object-center"
-                                />
-                              </div>
-
-                              <div className="ml-4 flex flex-1 flex-col">
-                                <div>
-                                  <div className="flex justify-between text-base font-medium text-gray-900">
-                                    <h3>
-                                      <a href={product.href}>
-                                        {' '}
-                                        {product.name}{' '}
-                                      </a>
-                                    </h3>
-                                    <p className="ml-4">{product.price}</p>
-                                  </div>
-                                  <p className="mt-1 text-sm text-gray-500">
-                                    {product.color}
-                                  </p>
+                          {!isEmpty ? (
+                            items.map((product) => (
+                              <li key={product.id} className="flex py-6">
+                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                  <img
+                                    src={product.image}
+                                    alt={product.title}
+                                    className="h-full w-full object-cover object-center"
+                                  />
                                 </div>
-                                <div className="flex flex-1 items-end justify-between text-sm">
-                                  <p className="text-gray-500">
-                                    Qty {product.quantity}
-                                  </p>
 
-                                  <div className="flex">
-                                    <button
-                                      type="button"
-                                      className="font-medium text-indigo-600 hover:text-indigo-500"
-                                    >
-                                      Remove
-                                    </button>
+                                <div className="ml-4 flex flex-1 flex-col">
+                                  <div>
+                                    <div className="flex justify-between text-base font-medium text-gray-900">
+                                      <h3>
+                                        <p> {product.title} </p>
+                                      </h3>
+                                      <p className="ml-4">{product.price}</p>
+                                    </div>
+                                  </div>
+                                  <div className="flex flex-1 items-end justify-between text-sm">
+                                    <p className="text-gray-500">Qty : 3</p>
+
+                                    <div className="flex">
+                                      <button
+                                        onClick={() => removeItem(product.id)}
+                                        type="button"
+                                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                                      >
+                                        Remove
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            </li>
-                          ))}
+                              </li>
+                            ))
+                          ) : (
+                            <p>Your card is empty</p>
+                          )}
                         </ul>
                       </div>
                     </div>

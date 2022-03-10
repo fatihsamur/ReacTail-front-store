@@ -5,12 +5,12 @@ import ClipLoader from 'react-spinners/ClipLoader';
 const Spinner = () => {
   const override = css`
     display: block;
-    margin: 0 auto;
-    border-color: red;
+    margin: 3rem auto;
+    border-color: #6dead1;
   `;
 
   let [loading] = useState(true);
-  let [color] = useState('#ffffff');
+  let [color] = useState('#6DEAD1');
 
   return (
     <div>
