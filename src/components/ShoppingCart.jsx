@@ -8,7 +8,8 @@ import { useCart } from 'react-use-cart';
 export default function Open() {
   const isOpen = useSelector((state) => state.open.value);
   const dispatch = useDispatch();
-  const { items, removeItem, isEmpty } = useCart();
+  const { items, removeItem, isEmpty, updateItemQuantity, cartTotal } =
+    useCart();
 
   return (
     <Transition.Root show={isOpen} as={Fragment} className="z-100">
@@ -86,7 +87,32 @@ export default function Open() {
                                     </div>
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
-                                    <p className="text-gray-500">Qty : 3</p>
+                                    <button
+                                      onClick={() =>
+                                        updateItemQuantity(
+                                          product.id,
+                                          product.quantity - 1
+                                        )
+                                      }
+                                    >
+                                      {' '}
+                                      -{' '}
+                                    </button>
+                                    <p className="text-gray-500">
+                                      {' '}
+                                      {product.quantity}{' '}
+                                    </p>
+                                    <button
+                                      onClick={() =>
+                                        updateItemQuantity(
+                                          product.id,
+                                          product.quantity + 1
+                                        )
+                                      }
+                                    >
+                                      {' '}
+                                      +{' '}
+                                    </button>
 
                                     <div className="flex">
                                       <button
@@ -111,12 +137,10 @@ export default function Open() {
 
                   <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                     <div className="flex justify-between text-base font-medium text-gray-900">
-                      <p>Subtotal</p>
-                      <p>$262.00</p>
+                      <p>Total</p>
+                      <p> {Number(cartTotal).toFixed(2)} </p>
                     </div>
-                    <p className="mt-0.5 text-sm text-gray-500">
-                      Shipping and taxes calculated at checkout.
-                    </p>
+
                     <div className="mt-6">
                       <a
                         href="/"
